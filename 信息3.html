@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Review: April</title>
+    <style>
+        /* 新增模态窗口样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 25px;
+            width: 70%;
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #2c5f2d;
+        }
+        
+        /* 原有样式优化 */
+        .center {text-align: center;}        
+        .website-container {
+            background-color: #f5f5f5;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .website-link {
+            display: block;
+            margin: 15px 0;
+            font-size: 1.2em;
+            padding: 12px;
+            border-left: 4px solid #2c5f2d;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        .website-link:hover {
+            transform: translateX(10px);
+        }
+        .modal img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<div class="center">
+    <!-- 内部链接 -->
+    <a href="#" onclick="openModal('self-intro')">Self Intro</a> |
+    <a href="#" onclick="openModal('favorite-player')">Favorite Player</a> |
+    <a href="#" onclick="openModal('homework')">Homework</a> |
+    
+    <!-- 外部链接 -->
+    <a href="https://www.youtube.com" target="_blank">YouTube</a> |
+    <a href="https://www.bilibili.com" target="_blank">Bilibili</a> |
+    <a href="https://www.mlb.com" target="_blank">MLB.com</a>
+</div>
+
+<!-- 模态窗口 -->
+<div id="self-intro" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 class="center">Self Introduction</h2>
+        <p>My name is Wang Zifan. I love baseball and played as a pitcher for four years in elementary school.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Baseball.png" alt="Baseball">
+    </div>
+</div>
+
+<div id="favorite-player" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 class="center">Yu Darvish - Career Achievements</h2>
+        <ul>
+            <li>April 2012 AL Rookie of the Month</li>
+            <li>2013 AL Strikeout Leader</li>
+            <li>3× All-Star (2012, 2013, 2014)</li>
+            <li>Notable Records:
+                <ul>
+                    <li>April 6, 2014: Reached 500 strikeouts in 401.2 innings</li>
+                    <li>September 9, 2017: Reached 1,000 strikeouts in 128 games</li>
+                </ul>
+            </li>
+        </ul>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Yu_Darvish_2021.jpg" alt="Yu Darvish Pitching">
+    </div>
+</div>
+
+<div id="homework" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 class="center">Homework Status</h2>
+        <p>The homework is finally finished!</p>
+        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646" alt="Completed Homework">
+    </div>
+</div>
+
+<!-- 主内容 -->
+<div class="website-container">
+    <h2 class="center">Featured Websites</h2>
+    
+    <a href="https://www.youtube.com" 
+       class="website-link" 
+       target="_blank"
+       style="color: #ff0000;">
+        🎥 YouTube - World's Largest Video Platform
+    </a>
+
+    <a href="https://www.bilibili.com" 
+       class="website-link" 
+       target="_blank"
+       style="color: #00a1d6;">
+        📺 Bilibili - Chinese Youth Culture Community
+    </a>
+
+    <a href="https://www.mlb.com" 
+       class="website-link" 
+       target="_blank"
+       style="color: #002D72;">
+        ⚾ MLB.com - Official Site of Major League Baseball
+    </a>
+</div>
+
+<script>
+    // 模态窗口控制函数
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+        document.body.style.overflow = 'hidden'; // 禁止背景滚动
+    }
+
+    function closeModal() {
+        var modals = document.getElementsByClassName('modal');
+        for(var i=0; i<modals.length; i++){
+            modals[i].style.display = 'none';
+        }
+        document.body.style.overflow = 'auto'; // 恢复滚动
+    }
+
+    // 点击模态窗口外部关闭
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
